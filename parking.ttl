@@ -1,0 +1,76 @@
+#first attempt at a vocabulary to define concepts and relationships
+# add any info about onotologies used ie from Dublin Core
+# Ordinance Survey ontologies 
+# baseURI: http://disabled-parking.epimorphics.com/def/terms/    should this be the github project link?
+# imports: http://purl.org/dc/terms/                             Dublin Core Metadata look for parking, lat long, to refer to properties
+# imports: http://www.w3.org/2004/02/skos/core    
+#imports:  http://data.ordnancesurvey.co.uk/ontology/spatialrelations/      check how to import this - from OS
+
+#mapping prefixes to IRI's 
+@prefix park:    <http://disabled-parking.epimorphics.com/def/terms/> . # defined prefix as park
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix os:      <http://data.ordnancesurvey.co.uk/ontology/spatialrelations/> #ontology has properties northing and easting, no classes
+@prefix ca:      <http://data.ordnancesurvey.co.uk/ontology/admingeo/CivilAdministrativeArea> #this might not be the right URI
+@prefix code:    <http://data.ordnancesurvey.co.uk/ontology/postcode/PostcodeSector>
+#can write out the url in full
+#add other ontologies here 
+
+#Classes
+
+park:LocalAuthority
+    rdf:type park:Class ;
+    #how to express properties? pick from the rdfs in the schema or make one up?
+    #has bays has entities?
+    park:LA_name "LA Name"^^xsd:string  ; #has property of name which is a string 
+    park:hasBay park:id_number xsd:int ; #duplication with Bay?
+    ca:district ""^^xsd:string ; #district for area bay is in from OS ontology
+    rdfs:SubClassOf: park:Bay ;
+    rdfs:domain 
+    rdfs:range park:Bay ;#would also have car park if this was included.
+    skos:prefLabel "Local Authority" ;
+    skos:altLabel "LA" ;
+
+
+
+
+#park:Bay same as - <http://disabled-parking.epimorphics.com/def/terms/Bay>
+park:Bay                               #prefix:Class default @
+    rdf:type park:Class ;         #the subject is an instance of a class a type of thing in this domain is a bay, will create instances
+    #what else do we know about this - domain and range constraints
+    #description by association with classes and infering further knowledge based on this
+    park:Id_number xsd:int ;
+    park:belongstoLA  park:LA_name ""xsd:^^string
+    ca:indistrict ""xsd:^^string ; #bay is in district of Local Authority
+    rdfs:SubClassOf park:Location  ;#how to write an 'is located at' property?
+    skos:prefLabel "Disabled bay" @en ; 
+    skos:altLabel "parking space"@en ;
+    rdfs:domain ca:LocalAuthority  ;#unsure that Bay should be in local authority domain
+    rdfs:range park:LocalAuthority ;
+    
+    
+    
+    
+  #park:Location same as - <http://disabled-parking.epimorphics.com/def/terms/Location>  
+park:Location   
+    rdf:type park:Class ;
+    os:easting ""xsd:string ;  
+    os:northing xsd ""xsd:string ;
+    code:PostcodeSector ;
+    skos:prefLabel "general location" ;
+    skos:altLabel "location" ;
+    domain: park:Bay ;
+    range: park:Bay ; #would also include Latitude, Longitude, postcode etc
+    
+        
+    
+############### examples of triples
+parkingBay1
+       [
+           park:Bay         park:Location           xsd:string
+           id value         no value in data        postcode
+       ]
