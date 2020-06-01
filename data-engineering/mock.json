@@ -1,0 +1,32 @@
+{
+    "bay01": {
+        "bayId": "01",
+        "postcode" : "CT16 1LY" ,
+        "street" : "ChurchStreet" ,
+        "numSpaces" : "4"
+    },
+    "bay02": {
+        "bayId": "02",
+        "postcode" : "CT17 9AD",
+        "street" : "WorthingtonStreet",
+        "numSpaces" : "4"
+    },
+    "bay03": {
+        "bayId": "03",
+        "postcode" : "CT16 1BW" ,
+        "street" : "PencesterRoad",
+        "numSpaces" : "1"
+    },
+    "bay04": {
+        "bayId": "04",
+        "postcode" : "CT17 9BP",
+        "street" :"WaterlooCrescent" ,
+        "numSpaces" : "5"
+    },
+    "bay05": {
+        "bayId": "05",
+        "postcode" : "CT16 1LE" ,
+        "street" : "Camden Cresecent",
+        "numSpaces" : "2"
+    }
+}
