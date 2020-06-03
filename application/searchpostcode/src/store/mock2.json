@@ -1,0 +1,45 @@
+{
+      "bays": [
+      {
+        "bayId": 1,
+        "street": "Redcatch Road",
+        "numSpaces": 3,
+        "charge": false
+
+      },
+      {
+        "bayId": 2,
+        "street": "Broadwalk",
+        "numSpaces": 2,
+        "charge": true
+      },
+      {
+        "bayId": 3,
+        "street": "Sylvia Avenue",
+        "numSpaces": 5,
+        "charge": false
+      }
+      ],
+      "carparks" : [
+        {
+        "name": "Cabot Circus",
+        "spaces": 30,
+        "city": "Bristol"
+        },
+        {
+          "name": "Broad Quay",
+          "spaces": 23,
+          "city": "Bristol"
+        },
+        {
+          "name": "m-shed",
+          "spaces": 12,
+          "city": "Bristol"
+        },
+        {
+          "name": "The Bull Ring",
+          "spaces": 40,
+          "city": "Birmingham"
+        }
+      ]
+}

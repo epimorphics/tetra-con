@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lockdown Shop</title>
+    <link href="styles.css" rel="stylesheet"/>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id='app'> <!--this div is where the connection between  instance and the DOM is made-->
+        <h1>Welcome to our store</h1>
+        <h2>Providing for your every lock down need!</h2>
+        <p>todays most popular product is {{topProduct}}</p>
+        <div>    
+            <p>we now stock</p>
+            <ul>
+                <li v-for="f in food" >{{f}}</li>
+            </ul>
+
+            <!--<div class="product-info">
+                <h1>{{title}}</h1>
+                <p v-if="inStock">In stock</p>
+                <p v-else>Out of stock</p>
+
+            </div>>
+        -->
+
+            <button v-on:click="addToTrolley" >Add to trolley</button>
+            <button v-on:click="RemoveFromTrolley" >Remove</button>
+
+            <div class="=trolley">
+                <p>Trolley {{trolley}}</p>
+            </div>
+        </div>
+            <div>
+            
+            <div v-for="variant in variants" 
+                :key="variant.variantId"
+                class="color-box"
+                :style="{ backgroundColor: variant.variantColour }" 
+                @mouseover="updateProduct(variant.image)">
+                
+            </div>
+        </div>
+        <div>
+            <img scr="images/store.svg" alt="shop icon">
+            <!--<p>{{data_image}}</p> -->
+        </div>
+        </div>
+
+
+    </div>
+    
+    <script src="app2.js"></script>
+</body>
+</html>
