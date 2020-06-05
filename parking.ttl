@@ -17,60 +17,90 @@
 @prefix os:      <http://data.ordnancesurvey.co.uk/ontology/spatialrelations/> #ontology has properties northing and easting, no classes
 @prefix ca:      <http://data.ordnancesurvey.co.uk/ontology/admingeo/CivilAdministrativeArea> #this might not be the right URI
 @prefix code:    <http://data.ordnancesurvey.co.uk/ontology/postcode/PostcodeSector>
+@prefix spatial: <http://schemas.opengis.net/geosparql/1.0/geosparql_vocab_all.rdf#>
+
 #can write out the url in full
 #add other ontologies here 
 
 #Classes
 
 park:LocalAuthority
-    rdf:type park:Class ;
-    #how to express properties? pick from the rdfs in the schema or make one up?
-    #has bays has entities?
-    park:LA_name "LA Name"^^xsd:string  ; #has property of name which is a string 
-    park:hasBay park:id_number xsd:int ; #duplication with Bay?
-    ca:district ""^^xsd:string ; #district for area bay is in from OS ontology
-    rdfs:SubClassOf: park:Bay ;
-    rdfs:domain 
-    rdfs:range park:Bay ;#would also have car park if this was included.
-    skos:prefLabel "Local Authority" ;
-    skos:altLabel "LA" ;
+    rdf:type rdfs:Class ;
+    rdfs:comment "this class represents a local authority" ;
+    rdfs:label "local authority" .
 
+park:laName
+    rdf:type rdfs:Property ;
+    rdfs:domain park:LocalAuthority ;
+    rdfs:range xsd:string ;
+    rdfs:description "Property denoting the name of the local authority" ;
+    rdfs:label "name" .
+
+
+    
+park:hasBay
+    rdf:type rdfs:Property ;
+    rdfs:domain park:LocalAuthority ; #this property applies to local authority
+    rdfs:range park:Bay ;#range here is the class Bay which appears on the right
+    rdfs:description "Property which describes an instance of one bay belonging to a local authority " ;
+    rdfs:label "has bay" .
 
 
 
 #park:Bay same as - <http://disabled-parking.epimorphics.com/def/terms/Bay>
 park:Bay                               #prefix:Class default @
-    rdf:type park:Class ;         #the subject is an instance of a class a type of thing in this domain is a bay, will create instances
-    #what else do we know about this - domain and range constraints
-    #description by association with classes and infering further knowledge based on this
-    park:Id_number xsd:int ;
-    park:belongstoLA  park:LA_name ""xsd:^^string
-    ca:indistrict ""xsd:^^string ; #bay is in district of Local Authority
-    rdfs:SubClassOf park:Location  ;#how to write an 'is located at' property?
-    skos:prefLabel "Disabled bay" @en ; 
-    skos:altLabel "parking space"@en ;
-    rdfs:domain ca:LocalAuthority  ;#unsure that Bay should be in local authority domain
-    rdfs:range park:LocalAuthority ;
-    
-    
-    
+    rdf:type rdfs:Class ;         #the subject is an instance of a class a type of thing in this domain is a bay, will create instances
+    rdfs:comment "this class represents an individual bay" ;
+    rdfs:label "disabled bay" .
+
+
+park:hasLocation #camelCase is normal usage 
+    rdf:type rdfs:Property ;
+    rdfs:domain park:Bay ;
+    rdfs:range park:Location ;#maps  onto location
+    rdfs:description "the location of the parking bay" ;
+    rdfs:label "location" .
+
+
+park:hasNumSpaces
+    rdf:type rdfs:Property ;
+    rdfs:domain park:Bay ;
+    rdfs:range xsd:int ; # mapping the type of thing onto a datatype of integer
+    rdfs:description "the number of spaces in a bay" ;
+    rdfs:label "number of spaces" .
+
     
   #park:Location same as - <http://disabled-parking.epimorphics.com/def/terms/Location>  
 park:Location   
-    rdf:type park:Class ;
-    os:easting ""xsd:string ;  
-    os:northing xsd ""xsd:string ;
-    code:PostcodeSector ;
-    skos:prefLabel "general location" ;
-    skos:altLabel "location" ;
-    domain: park:Bay ;
-    range: park:Bay ; #would also include Latitude, Longitude, postcode etc
-    
-        
-    
-############### examples of triples
-parkingBay1
-       [
-           park:Bay         park:Location           xsd:string
-           id value         no value in data        postcode
-       ]
+    rdf:type rdfs:Class ;
+    rdfs:subClassOf spatial:SpatialObject ; #don't need to declare the Properties easting and northing as they are in SpatialObject
+    rdfs:comment "this class provides location information" ;
+    rdfs:label "location" .
+
+
+# class for Spaces - a blank node
+park:Spaces
+    rdf:type rdfs:Class ;
+    rdfs:comment "information about the size" ;
+    rdfs:label "size" .
+## example instance data
+
+park:parkingBay1
+    rdf:type park:Bay ;
+    park:hasLocation park:parkingBay1Location.
+
+park:parkingBay1Location
+    rdf:type park:Location ;
+    os:easting "1224"^^xsd:int ;
+    os:northing "4567"^^xsd:int.
+
+
+park:HerefordBay1
+    rdf:type park:Bay ;
+    park:hasNumSpaces park:HerefordBay1NumSpaces . #the object is a blank node 
+
+park:HerefordBay1
+    rdf:type park:Bay ;
+    [ xsd:int 3 .
+
+    ]

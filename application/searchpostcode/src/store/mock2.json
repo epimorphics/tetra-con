@@ -2,6 +2,7 @@
       "bays": [
       {
         "bayId": 1,
+        "postcode" : "BS4 2HJ ",
         "street": "Redcatch Road",
         "numSpaces": 3,
         "charge": false
@@ -9,16 +10,53 @@
       },
       {
         "bayId": 2,
+        "postcode": "BS4 2QU",
         "street": "Broadwalk",
         "numSpaces": 2,
         "charge": true
       },
       {
         "bayId": 3,
+        "postcode": "BS3 5DB",
         "street": "Sylvia Avenue",
         "numSpaces": 5,
         "charge": false
-      }
+      },
+      {
+        "bayId": "4",
+        "postcode" : "CT16 1LY" ,
+        "street" : "ChurchStreet" ,
+        "numSpaces" : "4",
+        "charge": true
+      },
+        {
+            "bayId": "5",
+            "postcode" : "CT17 9AD",
+            "street" : "WorthingtonStreet",
+            "numSpaces" : "4",
+            "charge": false
+        },
+        {
+            "bayId": "6",
+            "postcode" : "CT16 1BW" ,
+            "street" : "PencesterRoad",
+            "numSpaces" : "1",
+            "charge": true
+        },
+        {
+            "bayId": "7",
+            "postcode" : "CT17 9BP",
+            "street" :"WaterlooCrescent" ,
+            "numSpaces" : "5",
+            "charge": false
+        },
+        {
+            "bayId": "8",
+            "postcode" : "CT16 1LE" ,
+            "street" : "Camden Cresecent",
+            "numSpaces" : "2",
+            "charge": true
+        }  
       ],
       "carparks" : [
         {

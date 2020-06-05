@@ -1,9 +1,10 @@
 <template>
     <div id="payment">
         <h3>Payment</h3>
-        <!-- <p>See which bays are free</p>
-        <p v-for="bay in bays" :key="bay.bayId"></p>
-        <p v-if="bays.charge">{{bays.street}} has Charge for use</p>
+         <p>Free bays</p>
+         
+        <p id="payment-results" v-for="space in freeSpaces" :key="space.bayId">{{space.street}}</p>
+       <!-- <p v-if="bays.charge">{{bays.street}} has Charge for use</p>
         <p v-else>{{bays.street}}Free parking</p> -->
         
     </div>
@@ -12,10 +13,12 @@
 <script>
 export default {
     name: "payment",
+    
     computed: {
-        payments() {
-        return this.$store.state.bays
+        freeSpaces() {
+        return this.$store.getters.freeSpaces;
     }
+    
 }
 }
 </script>

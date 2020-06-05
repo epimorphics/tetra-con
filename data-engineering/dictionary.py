@@ -68,12 +68,12 @@ header.insert(4, 'northing')
 # col_headers = sheet.row_values(5) #headers this one doesn't need to change, has to be this row
 
 
-
+first = 9 #could look at taking info on empty rows and using this to go into elif statement
 
 for ind in range(sheet.nrows):
     if ind < 9:
         continue
-    elif ind >= 9 and ind < 14:
+    elif ind >= first and ind < 14:
         mylist = sheet.row_values(ind)
         
         #print('header 5',header[0])
