@@ -1,0 +1,106 @@
+#first attempt at a vocabulary to define concepts and relationships
+# add any info about onotologies used ie from Dublin Core
+# Ordinance Survey ontologies 
+# baseURI: http://disabled-parking.epimorphics.com/def/terms/    should this be the github project link?
+# imports: http://purl.org/dc/terms/                             Dublin Core Metadata look for parking, lat long, to refer to properties
+# imports: http://www.w3.org/2004/02/skos/core    
+#imports:  http://data.ordnancesurvey.co.uk/ontology/spatialrelations/      check how to import this - from OS
+
+#mapping prefixes to IRI's 
+@prefix park:    <http://disabled-parking.epimorphics.com/def/terms/> . # defined prefix as park
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix os:      <http://data.ordnancesurvey.co.uk/ontology/spatialrelations/> #ontology has properties northing and easting, no classes
+@prefix ca:      <http://data.ordnancesurvey.co.uk/ontology/admingeo/CivilAdministrativeArea> #this might not be the right URI
+@prefix code:    <http://data.ordnancesurvey.co.uk/ontology/postcode/PostcodeSector>
+@prefix spatial: <http://schemas.opengis.net/geosparql/1.0/geosparql_vocab_all.rdf#>
+
+#can write out the url in full
+#add other ontologies here 
+
+#Classes
+
+park:LocalAuthority
+    rdf:type rdfs:Class ;
+    rdfs:comment "this class represents a local authority" ;
+    rdfs:label "local authority" .
+
+park:laName
+    rdf:type rdfs:Property ;
+    rdfs:domain park:LocalAuthority ;
+    rdfs:range xsd:string ;
+    rdfs:description "Property denoting the name of the local authority" ;
+    rdfs:label "name" .
+
+
+    
+park:hasBay
+    rdf:type rdfs:Property ;
+    rdfs:domain park:LocalAuthority ; #this property applies to local authority
+    rdfs:range park:Bay ;#range here is the class Bay which appears on the right
+    rdfs:description "Property which describes an instance of one bay belonging to a local authority " ;
+    rdfs:label "has bay" .
+
+
+
+#park:Bay same as - <http://disabled-parking.epimorphics.com/def/terms/Bay>
+park:Bay                               #prefix:Class default @
+    rdf:type rdfs:Class ;         #the subject is an instance of a class a type of thing in this domain is a bay, will create instances
+    rdfs:comment "this class represents an individual bay" ;
+    rdfs:label "disabled bay" .
+
+
+park:hasLocation #camelCase is normal usage 
+    rdf:type rdfs:Property ;
+    rdfs:domain park:Bay ;
+    rdfs:range park:Location ;#maps  onto location
+    rdfs:description "the location of the parking bay" ;
+    rdfs:label "location" .
+
+
+park:hasNumSpaces
+    rdf:type rdfs:Property ;
+    rdfs:domain park:Bay ;
+    rdfs:range xsd:int ; # mapping the type of thing onto a datatype of integer
+    rdfs:description "the number of spaces in a bay" ;
+    rdfs:label "number of spaces" .
+
+    
+  #park:Location same as - <http://disabled-parking.epimorphics.com/def/terms/Location>  
+park:Location   
+    rdf:type rdfs:Class ;
+    rdfs:subClassOf spatial:SpatialObject ; #don't need to declare the Properties easting and northing as they are in SpatialObject
+    rdfs:comment "this class provides location information" ;
+    rdfs:label "location" .
+
+
+# class for Spaces - a blank node
+park:Spaces
+    rdf:type rdfs:Class ;
+    rdfs:comment "information about the size" ;
+    rdfs:label "size" .
+## example instance data
+
+park:parkingBay1
+    rdf:type park:Bay ;
+    park:hasLocation park:parkingBay1Location.
+
+park:parkingBay1Location
+    rdf:type park:Location ;
+    os:easting "1224"^^xsd:int ;
+    os:northing "4567"^^xsd:int.
+
+
+park:HerefordBay1
+    rdf:type park:Bay ;
+    park:hasNumSpaces park:HerefordBay1NumSpaces . #the object is a blank node 
+
+park:HerefordBay1
+    rdf:type park:Bay ;
+    [ xsd:int 3 .
+
+    ]
