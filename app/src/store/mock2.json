@@ -1,0 +1,99 @@
+{
+      "bays": [
+      {
+        "bayId": "1",
+        "postcode" : "CT16 1LY" ,
+        "street" : "Church Street" ,
+        "numSpaces" : "4",
+        "eastings" :  "141586",
+        "northings" : "631777"
+        
+      },
+        {
+        "bayId": "2",
+        "postcode" : "CT17 9AD",
+        "street" : "Worthington Street",
+        "numSpaces" : "4",
+        "eastings" : "141617",
+        "northings" : "631827"
+            
+        },
+        {
+        "bayId": "3",
+        "postcode" : "CT16 1BW" ,
+        "street" : "Pencester Road",
+        "numSpaces" : "1",
+        "eastings" :  "141491",
+        "northings" : "631960"
+            
+        },
+        {
+        "bayId": "4",
+        "postcode" : "CT17 9BP",
+        "street" :"Waterloo Crescent" ,
+        "numSpaces" : "5",
+        "eastings" :  "141164",
+        "northings" : "632109"
+            
+        },
+        {
+        "bayId": "5",
+        "postcode" : "CT16 1LE" ,
+        "street" : "Camden Cresecent",
+        "numSpaces" : "2",
+        "eastings" :  "141196",
+        "northings" : "632044"
+            
+        },
+        {
+          "bayId": "6",
+          "postcode" : "NP7 5EE" ,
+          "street" : "Castle Street",
+          "numSpaces" : "8",
+          "eastings" : "330183" ,
+          "northings" : "214104"
+          },
+          {
+          "bayId": "7",
+          "postcode" : "NP7 5BD" ,
+          "street" : "Trinity Terrace     ",
+          "numSpaces" : "2",
+          "eastings" : "321426" ,
+          "northings" : "530004"
+          },
+          {
+            "bayId": "8",
+            "postcode" : "NP15 1XP" ,
+            "street" : "Maryport Street South   ",
+            "numSpaces" : "1",
+            "eastings" : "337806" ,
+            "northings" : "200414"
+          },
+          {
+            "bayId": "9",
+            "postcode" : "NP26 3ER" ,
+            "street" : "Sycamore Terrace  ",
+            "numSpaces" : "5",
+            "eastings" : "342845" ,
+            "northings" : "187138"
+          },
+          {
+            "bayId": "10",
+            "postcode" : "NP16 5JA" ,
+            "street" : "Welsh Street",
+            "numSpaces" : "8",
+            "eastings" : "353523" ,
+            "northings" : "193991"
+          }               
+      ],
+      "start" : [
+        {
+          "placeName" : "my home address",
+          "eastings" : "360887",
+          "northings" : "171007",
+          "journeyStart" : "BS4 2LG"
+        }
+
+      ]
+      
+}

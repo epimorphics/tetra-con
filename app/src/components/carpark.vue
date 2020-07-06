@@ -1,5 +1,7 @@
 <template>
-    <div id="carpark">
+    <div >
+        <main id="carpark">
+            <router-link to="home">Home</router-link>
         <h3>Find carparks</h3>
         <form>
             <label>Select City </label>
@@ -8,6 +10,7 @@
                 <option value="birmingham">Birmingham</option>
             </select>
         </form>
+        </main>
     </div>
 </template>
 
@@ -25,12 +28,12 @@ export default {
 
 <style>
 #carpark {
-    display: inline;
+    display: block;
     grid-column-start: 1;
     grid-row: auto;
     border-style: solid;
     border-color: #ED4F33;
-    max-width: 300px;
+    max-width: 100vw;
     padding: 20px;
 }
 #cities {

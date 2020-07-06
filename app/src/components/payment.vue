@@ -26,7 +26,7 @@ export default {
 <style>
 #payment {
     display: inline;
-    grid-column-start: 1;
+    grid-column-start: 2;
     grid-row: auto;
     border-style: solid;
     border-color: #ED4F33;
